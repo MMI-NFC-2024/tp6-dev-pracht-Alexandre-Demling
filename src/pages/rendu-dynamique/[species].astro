@@ -1,0 +1,26 @@
+---
+export const prerender = false;
+
+import penguins from "../../assets/penguins.json";
+import PlotFigure from "../../components/PlotFigure.astro";
+import * as Plot from "@observablehq/plot";
+
+const { species } = Astro.params;
+const filtered = penguins.filter(p => p.species === species);
+
+const options = {
+  marks: [
+    Plot.dot(filtered, {
+      x: "culmen_length_mm",
+      y: "culmen_depth_mm",
+      fill: "steelblue"
+    })
+  ],
+  x: { label: "Longueur du bec " },
+  y: { label: "Profondeur du bec" },
+  title: `Pingouins - ${species}`
+};
+---
+
+<h1>Graphique pour l'espèce : {species}</h1>
+<PlotFigure options={options} />

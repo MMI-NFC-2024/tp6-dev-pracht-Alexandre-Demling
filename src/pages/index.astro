@@ -1,12 +1,20 @@
 ---
-import PlotFigure from "../components/PlotFigure.astro";
 import Layout from "../layouts/Layout.astro";
+import PlotFigure from "../components/PlotFigure.astro";
 import * as Plot from "@observablehq/plot";
 import penguins from "../assets/penguins.json";
 ---
 
 <Layout>
-  <h1 class="text-2xl">Test Astro et Plot (Observablehq)</h1>
+  <h1>TP6</h1>
+
+  <h2>Navigation</h2>
+  <ul>
+    <li><a href="/rendu-dynamique/">ici  Rendu dynamique</a></li>
+    <li><a href="/rendu-statique/">ici  Rendu statique</a></li>
+  </ul>
+
+  <h2>Graphique global (toutes espèces)</h2>
   <PlotFigure
     options={{
       marks: [
@@ -16,6 +24,9 @@ import penguins from "../assets/penguins.json";
           stroke: "species",
         }),
       ],
+      x: { label: "Longueur du bec (mm)" },
+      y: { label: "Profondeur du bec (mm)" },
+      title: "Toutes les espèces de pingouins",
     }}
   />
 </Layout>

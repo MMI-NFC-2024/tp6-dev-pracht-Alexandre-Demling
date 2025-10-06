@@ -1,0 +1,14 @@
+---
+import penguins from "../../assets/penguins.json";
+
+const speciesList = [...new Set(penguins.map(p => p.species))];
+---
+
+<h1>especes de pingouins (rendu dynamique)</h1>
+<ul>
+  {
+    speciesList.map(s => (
+      <li><a href={`/rendu-dynamique/${s}`}>{s}</a></li>
+    ))
+  }
+</ul>
